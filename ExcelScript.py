@@ -48,7 +48,6 @@ def get_range(sheet):
     return handle_range[1:]
 
 
-#object参数为实例化的对象名称，start,end为区间范围
 def title(object,start,end):
     title = {}
     for row in range(start,end):
@@ -102,28 +101,16 @@ def famous(object,start,end):
 
 #主函数负责处理数据
 def main():
-    # 打开excel
     excel = Excel('球员信息.xlsx')
-    # 获取sheet页名称
-    # sheet_name = excel.sheet_names[0]
-    #遍历sheet页，获取所有sheet页信息
     for sheet_name in excel.sheet_names:
-        # 获取sheet页信息
         sheet = excel.work_sheet(sheet_name)
         title_list = list()
         for interval in get_range(sheet):
-            # print(interval)
-            #获取端口区间
             start,end =interval
-            #获取title信息
             get_title = title(excel,start,end)
-            #获取port_tag信息
             get_port_tag = famous(excel,start,end)
-            #合并title、port_tag
             get_title.update(get_port_tag)
-            # print(get_title)
             title_list.append(get_title)
-        # print(yaml.dump(title_list, Dumper=yaml.RoundTripDumper))
 
         file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),'file')
         file_name = '{}.yaml'.format(sheet_name)
