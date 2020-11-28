@@ -73,11 +73,10 @@ def famous(object,start,end):
     for row in range(start,end):
 
         port_type_value = {'balls': transfer_list(object.cell(row, 8)),'level': object.cell(row, 9),
-                            'speed':transfer_list(object.cell(row, 10)),
-
-                           }
-
+                            'speed':transfer_list(object.cell(row, 10))}
+                           
         port_type = object.cell(row, 7)
+        
         if port_type:
             port_tag.update({port_type : port_type_value})
             port_type_cache = port_type
@@ -105,6 +104,7 @@ def main():
     for sheet_name in excel.sheet_names:
         sheet = excel.work_sheet(sheet_name)
         title_list = list()
+        
         for interval in get_range(sheet):
             start,end =interval
             get_title = title(excel,start,end)
