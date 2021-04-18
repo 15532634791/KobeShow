@@ -1,2 +1,1 @@
-# ExcelScript
-表格转换 excel.py 及 excel表格需要放到同一个目录下
+表格转换 acp.py 及 阿里云计算题库表格需要放到同一个目录下
